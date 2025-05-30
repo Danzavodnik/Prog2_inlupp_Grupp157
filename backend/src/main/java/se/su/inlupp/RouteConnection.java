@@ -18,6 +18,9 @@ public class RouteConnection<T> implements Edge<T> {
 
     @Override    
     public void setWeight(int weight){
+        if (weight < 0) {
+        throw new IllegalArgumentException("Error: Vikten får inte vara negativ.");
+        }
         this.weight = weight;
     }
 
@@ -32,7 +35,7 @@ public class RouteConnection<T> implements Edge<T> {
     }
     @Override
     public String toString(){
-        return String.format("→ %s (%s, vikt: %d)", destination, name, weight);
+        return "till " + getDestination() + " med " + getName() + " tar " + getWeight();
     }
     
 }
